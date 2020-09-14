@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Special+Elite&display=swap");
+body {
+  margin: 0;
+}
+
+h1 {
+  background: #143a53;
+  color: white;
+  padding: 1em 0.5em;
+  font-size: 3em;
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+}
+
+.notes {
+  font-family: "Special Elite", cursive;
+}
+
+/*# sourceMappingURL=styles.css.map */
