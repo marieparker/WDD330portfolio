@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <title>Story Editor</title>
+  <script>
+    function loadstory() {
+      var storyName = document.getElementById('name_input').value
+      var storyHTML = localStorage.getItem(storyName)
+      document.getElementById('story_editor').value = storyHTML
+    }
+    function savestory() {
+      var storyName = document.getElementById('name_input').value
+      var storyHTML = document.getElementById('story_editor').value
+      localStorage.setItem(storyName, storyHTML)
+    }
+    function displaystory() {
+      var storyHTML = document.getElementById('story_editor').value
+      document.getElementById('story_display').innerHTML = storyHTML
+    }
+  </script>
+
+  <style>
+    textarea {
+      width: 800px;
+      height: 250px;
+      background-color: lightyellow;
+    }
+    h1, input, section, textarea {
+      margin-bottom: .5em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Story Editor</h1>
+  Story Name: <input id="name_input"></input>
+  <section>
+    <button onclick="loadstory()">Find and Edit It</button>
+    <button onclick="savestory()">Save It</button>
+    <button onclick="displaystory()">Display It</button>
+  </section>
+  <textarea id="story_editor" placeholder="Your super great eciting story goes here!"></textarea>
+
+  <section id="story_display"></section>
+</body>
+</html>
