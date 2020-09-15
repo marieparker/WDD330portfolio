@@ -1,29 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&family=Special+Elite&display=swap');
+$blue: rgb(20, 58, 83);
+$peach: rgb(250, 163, 86);
 
 body {
     margin: 0;
     font-family: 'Oswald', sans-serif;
+    background: rgb(241, 241, 241);
 }
 
 h1 {
-    background: rgb(20, 58, 83);
+    background: $blue;
     color: white;
     padding: 1em .5em;
     margin: 0;
 }
 
+h2 {
+
+}
+
 .notes a {
     font-family: 'Special Elite', cursive; 
     text-decoration: none;
-    color: black;
+    color: $blue;
 
     &:hover {
-        color: rgb(252, 188, 133);
+        color: $peach;
     }
+}
+
+div {
+    margin: 1em;
 }
 
 @media only screen and (min-width: 700px) {
     h1 {
         font-size: 3em;
+    }
+
+    div {
+        margin: 2em;
     }
 }

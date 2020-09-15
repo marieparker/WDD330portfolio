@@ -2,6 +2,7 @@
 body {
   margin: 0;
   font-family: "Oswald", sans-serif;
+  background: #f1f1f1;
 }
 
 h1 {
@@ -14,15 +15,23 @@ h1 {
 .notes a {
   font-family: "Special Elite", cursive;
   text-decoration: none;
-  color: black;
+  color: #143a53;
 }
 .notes a:hover {
-  color: #fcbc85;
+  color: #faa356;
+}
+
+div {
+  margin: 1em;
 }
 
 @media only screen and (min-width: 700px) {
   h1 {
     font-size: 3em;
+  }
+
+  div {
+    margin: 2em;
   }
 }
 
