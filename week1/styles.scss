@@ -17,6 +17,7 @@ h1 {
 
 .columns {
     margin: 1em 1em;
+    font-family: 'Special Elite', cursive;
 }
 
 @media only screen and (min-width: 700px) {
@@ -26,7 +27,7 @@ h1 {
 
     .columns {
         display: grid;
-        grid-gap: 10px;
+        grid-gap: 30px;
         grid-template-columns: 2fr 1fr;
         margin-left: 2em;
     }
