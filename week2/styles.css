@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Special+Elite&display=swap");
+body {
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+  background: #f1f1f1;
+}
+
+h1 {
+  background: #143a53;
+  color: white;
+  padding: 1em 0.5em;
+  margin: 0;
+}
+
+h2 {
+  font-family: "Special Elite", cursive;
+}
+
+.columns {
+  margin: 1em 1em;
+}
+
+@media only screen and (min-width: 700px) {
+  h1 {
+    font-size: 3em;
+  }
+
+  .columns {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 2fr 1fr;
+    margin-left: 2em;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
