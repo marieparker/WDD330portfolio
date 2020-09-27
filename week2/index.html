@@ -5,22 +5,235 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Week 1 Notes</title>
+    <title>Week 2 Notes</title>
     <meta name="description" content="Marie Parker's WDD 330 Portfolio">
 
     <link href="styles.css" rel="stylesheet">
 
 </head>
 <body>
-    <h1>Marie Parker - Week __ Notes</h1>
+    <h1>Marie Parker - Week 2 Notes</h1>
     <div class="columns">
         <div class="col1">
             <h2>Notes</h2>
+
+            <h3>Programming Basics</h3>
+            <ul>
+                <li>Block = series of statements surrounded by curly brackets</li>
+                <li>Primitive Data Types: String, Symbolm Number, Boolean, Undefined, Null</li>
+                <li>Anything not a primitive value is an object</li>
+                <li>Use 'typeof' to find out what type of data something is</li>
+                <li>An operator (such as 'typeof') applies to an operand. Some operators require one operand, 
+                    two operands (binary operator), or even three (ternary operator).</li>
+                <li>Declare variables
+                    <ul>
+                        <li>const = if the variable value will not change (only for primitive data types)</li>
+                        <li>let = if the variable value may change later on</li>
+                        <li>Declare multiple variables at the same time by separting them with commas.</li>
+                        <li>'var' is now obsolete as of ES6, but is obviously backwards compatible</li>
+                        <li>'const' and 'let' are block scoped, they are only available in the block they are 
+                            referenced in, either global or local scope</li>
+                        <li>a variable defined or redefined WITHOUT using 'const' or 'let' will have global scope</li>
+                    </ul>
+                </li>
+                <li>Use a backslash to escape a character (return or tab etc...), this will make it appear as itself and will not be 
+                    considered part of the code.</li>
+                <li>Every string has a .length property, it is an immutable property (cannot be modified manually)</li>
+                <li>.toUpperCase(): changes all charaters in string to upper case</li>
+                <li>.toLowerCase(): changes all charaters in string to lower case</li>
+                <li>.charAt(): when the place number is entered it will return what charater is in that place in the string</li>
+                <li>.indexOf(); for when you want to find which place a character is first in, will return -1 if it isn't there</li>
+                <li>.lastIndexOf(): to find where the last occurence of a character is</li>
+                <li>.includes(); returns a Boolean value</li>
+                <li>.startsWith(): returns a Boolean value, is case-sensitive</li>
+                <li>.endsWith(): returns a Boolean value, case-sensitive</li>
+                <li>.concat(): will concatenate two string together (or just use +)</li>
+                <li>.trim(): removes whitespace at beginning and end of the string</li>
+                <li>.repeat(): will repeat the string the stated number of times</li>
+                <li>Symbols have no literal form, can be assigned to moe than one variable and still be considered unique,</li>
+                <li>Numbers</li>
+                    <ul>
+                        <li>.isInteger(): returns Boolean value</li>
+                        <li>if it starts with 0x it's hexidecimal</li>
+                        <li>if it starts with 0o it's octal</li>
+                        <li>Exponents: 1e6 = 1 times 10 to the power of 6, 1000000</li>
+                        <li>..toExponential(): retuens the number in exponential notation</li>
+                        <li>toFixed(): rounds a number to a fixed number of decimal places</li>
+                        <li>.toPrecision(): rounds the number to a fixed number of sig figs</li>
+                        <li>exponents are calculate using two stars **</li>
+                        <li>% (modulo) calculates the remainder</li>
+                        <li>NaN is a number type</li>
+                        <li>.isFinite(): checks if a number is a number, returns Boolean</li>
+                        <li>Number(): converts a string to a number</li>
+                        <li>String() OR ..toString(): converts a number to a string</li>
+                        <li>.parseInt(): converts things with a certain base to numbers, does not round (simply removes what is after the decimal)<br>
+                            example: parseInt('1010', 2); returns 10 (converts binary to decimal)</li>
+                        <li>Null behaves like 0</li>
+                    </ul>
+                <li>Booleans</li>
+                    <ul>
+                        <li>only true or false</li>
+                        <li>only 9 things are always falsy<br>
+                        ""<br>
+                        ''<br>
+                        ``<br>
+                        0<br>
+                        -0<br>
+                        Nan<br>
+                        false<br>
+                        null<br>
+                        undefined</li>
+                    </ul>
+                <li>Logical Operators (! is NOT, && is AND, || is OR)</li>
+                <li>Comparing (== is soft equality, === is hard equality (must also be same type), !== is not equal, > is greater than, < is less than, >= is greater than or equal to, <= is less than or equal to)</is></li>
+                <li>These operators are also used with strings and compare alphabetically</li>
+            </ul>
+            <h3>Arrays, Logic, and Loops</h3>
+            <ul>
+                <li>Array literal**: "const myArray = [];"</li>
+                    <ul>
+                        <li>creating literal: "const avengers = ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye'];</li>
+                        <li>remove: "delete avengers[3];" -- will only delete what is in it, not the space. The value is now just undefined.</li>
+                    </ul>
+                
+                <li>Array constructor: "const myArray = new Array();</li>
+                <li>Destructuring: "const [x,y] = [1,2];" -- assigns values to both variable x and y.</li>
+                <li>Array Properties and Methods</li>
+                    <ul>
+                        <li>.length: mutable (means we can just assign it a value, change it manually. This adds or deletes spaces in the array)</li>
+                        <li>.pop : returns last item of array, but it is no longer part of the array</li>
+                        <li>.shift: returns first item of array, but it is no longer part of the array</li>
+                        <li>.push: adds a new value to the end (returns the length of the array)</li>
+                        <li>.unshift: adds a new item to the beginning of the array (returns the nre length of the array)</li>
+                        <li>.concat(): merges two or more arrays to create a NEW array<br>
+                                example: avengers.concat(['Hulk', 'Hawkeye', 'Blak Widow']);</li>
+                        <li>spread: place three periods before each array to be combined and it spreads out those arrays to put them together.<br>
+                                example: avengers = [ ...avengers, ...['Hulk', 'Hawkeye', 'Black Widow'] ];</li>
+                        <li>.join(): turns the entire array into a string, each value being separated by a comma. You can choose what will go between each value<br>
+                                example: avengers.join(' & ');</li>
+                        <li>.slice(): takes out a slice of the array (but they remain in the spaces)<br>
+                                example: avengers.slice(2,4); --this pulls out the 3rd and fourth values (it starts at the third item [2] and ends before the fourth)</li>
+                        <li>.splice(): removes items from an aray and inserts new items (or no items if no new ones are specified). Destructive, it permanently changes the array.<br>
+                                example: avengers.splice(3, 1, 'Scarlet Witch'); -- returns the values removed, this will start the splice at the 3 index (fourth value) 
+                                and extend for a total of one value. A zero in the second place will simple add any new values after the index specfied by the first number.</li>
+                        <li>.reverse(); reverses the order permanently.</li>
+                        <li>.sort(); sorts alphabetically (Capital letters come before lower case, and 9 would come after 10).</li>
+                        <li>.indexOf(): finds if the array contains something<br>
+                                example: avengers.indexOf('Iron Man'); will return the index if it is there, will return -1 if it is not</li>
+                        <li>.includes(): similar to .indexOf() but returns a Boolean value.</li>
+                    </ul>
+                <li>Multidirectional Arrays: a value within an array could also be an array</li>
+                    <ul>
+                        <li>to reference them: coordinates[0][1]; returns second value of the first array.</li>
+                        <li>spread (...) will flatten the multidorectional array, removing any nested arrays.</li>
+                    </ul>
+                <li>Sets: it cannot include any duplicate values, DO NOT have index notation<br>
+                        "const list = new Set();"</li>
+                    <ul>
+                        <li>.add(): adds new values to sets<br>
+                            example: list.add(1);<br>
+                            example: list.add(1).add(2).add(3);</li>
+                        <li>OR "const numbers = new Set([1,2,3]);</li>
+                        <li>When you try to add a string it will separate out each letter and delete the duplicates (i.e. 'hello' would become Set { 'h', 'e', 'l', 'o' }
+                            <br>So you must use .add to add separate words: Set.add('the').add('worst')</li>
+                        <li>Any non-primitive values (arrays, objects) are treated unique even if they contain the same values.</li>
+                    </ul>
+                <li>Set methods</li>
+                    <ul>
+                        <li>.size(): returns length of the set</li>
+                        <li>.has(): checks if a certain value is in the set, returns Boolean</li>
+                        <li>.delete(): returns true if it was removed, returns false if it wasn't in the set and couldn't be removed</li>
+                        <li>.clear(); removes ALL values from the set</li>
+                    </ul>
+                <li>Convert Set to an Array using spread operator<br>
+                        example: const shoppingArray = [...shoppingSet];<br>
+                        OR const shoppingArray = Array.from(shoppingSet);</li>
+                <li>WeakSets(): only take non-primitive data, still use .add, .has, .delete</li>
+                <li>Maps keep a list of key and value pairs (like a dictionary), any data type as a key<br>
+                        example: const romanNumerals = new Map()</li>
+                    <ul>
+                        <li>.set(): add entires</li>
+                        <li>.get(): gets the value for the key entered</li>
+                        <li>.has(): returns a Boolean for if the map has a certain key</li>
+                        <li>.size: counts the number of key and value pairs</li>
+                        <li>.delete(): specify using the key, returns Boolean value</li>
+                        <li>.clear(): removes all key/value pairs.</li>
+                    </ul>
+                <li>Maps can also be created using arrays. This bypasses the .set()<br>
+                    example: const heroes = new Map([ ['Clark Kent', 'Superman'], ['Bruce Wayne', 'Batman']])
+                </li>
+                <li>Convert Map to Array using the same methods of for Sets</li>
+                <li>Logic</li>
+                    <ul>
+                        <li>if (condition) { // code to run} <br>
+                        else if (condition) { // code to run}<br>
+                        else { // code to run }</li>
+                        <li>if...else shorthand: condition ? ( // ode to run if true) : ( // code to run if false)</li>
+                        <li>switch uses cases to check against an original value<br>
+                            example: switch (number) {<br>
+                                case 4: console.log('You rolled 4!');<br>
+                                break;<br>
+                                case 5: console.log('You rolled 5!');<br>
+                                break;<br>
+                                default: console.log('You rolled a number less than 4.');<br>
+                                break; }<br></li>
+                    </ul>
+                <li>Loops</li>
+                <li>while loop: while (condition) { //do something };</li>
+                <li>do...while loop: do { //do something } while (condition);</li>
+                <li>for loop: for (initialization ; condition ; after ) { do something };<br>
+                    for loops can be nested</li>
+                <li>for-of loop, for looping over arrays, sets and maps: for (const value of objectName) { do somthing };<br>
+                    (when looping over maps use 'const key of mapName.keys()' or 'const value of mapName.values()' or 'const [key, value] of mapName.entires()')</li>
+            </ul>
+            <h3>Functions</h3>
+            <ul>
+                <li>Function literal:<br>
+                    function hello() {<br>
+                        do something;<br>
+                    }</li>
+                <li>Function expression (also literal):<br>
+                const goodbye = function(){<br>
+                do something;<br>
+                };  (this example is an anonymous function because it doesn't have a name)</li>
+                <li>Function Constructors: the bosy is entered as a string, not recommended because quotation marks get confusing</li>
+                <li>Return values in functions is what will be returned when the funstion is complete. So, you can assign a variable to a function and the 
+                    function will return something which will be assigned to the variable.</li>
+                <li>Functions can be written with parameters which are values that will be sent into the function and used during its running.</li>
+                <li>Variable numbers of arguments can be handles with<br>
+                    function arguments() {<br>
+                        return arguments;<br>
+                    }<br>
+                    this is NOT an array, although it does have a length value. It can be turned into an array using:<br>
+                    function rest(...args) {<br>
+                    return args;<br>
+                    }</li>
+                <li>Default parameters: assign the default in the function definition, they should always come after non-default<br>
+                    example: function hello(name='World') {<br>
+                    console.log('Hello ${name}!);<br>
+                    }</li>
+                <li>Arrow function: return keyword is not required (because it stores whatever happened in the function as the variable<br>
+                    example: const square = x => x*x; , where square is the name, x is the parameter, and x*x is the function action<br>
+                    If you need more than one parameter simply place inside parenthesis separated by a comma</li>
+                <li>Hoisting moves all variable (using keyword var) and function declarations to the top.<br>
+                    An anonymous function expression will be hoisted simlar to variables (i.e. using var is hoisted, const of let NOT hoisted)</li>
+                <li>Callbacks: functions can be given as parameters in another function</li>
+                <li>.forEach() will loop through an array using each value as a parameter<br>
+                    example: colors.forEach( (color,index) => console.log('Color at position ${index} is ${color}') );</li>
+                <li>.map(): takes a callback function as a parameter, and returns a new array with the new values.</li>
+                <li>.reduce() takes a callback and cumulatively combines the result for each iteration into a single value<br>
+                    example: [1,2,3,4,5].reduce( (acc,val) => prev + val); returns 15<br>
+                    example: [1,2,3,4,5].reduce( (acc,val) => prev + val, 10); returns 25, because the second paremeter (10) tells it where to start counting.</li>
+                <li>.filter(): returns a new array that only contains items from the original that returned true when passed to the callback. (the number 0 is a falsy value)</li>
+                <li>iterators (like the previous 4) can be chained together</li>
+            </ul>
         </div>
 
         <div class="col2">
             <h2>Questions</h2>
-                
+            <ul>
+                <li>No immediate questions. I'm sure that things will come up as I try to use things in more examples, but I don't know those until I run into them. :)</li>
+            </ul>    
         </div>
     </div>
 </body>
