@@ -79,6 +79,11 @@
                 margin: 1% 2.5%;
             }
 
+            #photoCred {
+                text-align: right;
+                margin: .5em .2em .5em 0;
+            }
+
 
         </style>
         
@@ -100,6 +105,10 @@
             <h2>Sorting Results</h2>
             <div id="results"></div>
         </div>
+
+        <footer>
+            <div id='photoCred'><i>All photos sourced from Unsplash.com</i></div>
+        </footer>
 
         <script>
 
@@ -200,7 +209,6 @@
                         const infoText = document.createTextNode(item.name + " - " + 'Ineresting Fact: ' + item.fact);
                         info.appendChild(infoText);
                         box.appendChild(info);
-                        //console.log(info);
                         
                     })
               }
@@ -209,7 +217,29 @@
                 const BigtoSmall = animals.sort(function(a,b){
                     return b.length - a.length;
                 });
-                console.log(BigtoSmall);
+                const results = document.getElementById('results');
+                    results.innerHTML = '';
+
+                    //Creates New div for Sorted items
+                    const size = document.createElement('div');
+                    size.setAttribute('id', 'size_results');
+                    results.appendChild(size);
+                    let title = document.createElement('h3');
+                    title.appendChild(document.createTextNode('Largest to Smallest'));
+                    size.appendChild(title);
+
+                    BigtoSmall.forEach(function (item) {
+                        const list = document.getElementById('size_results');
+                        const box = document.createElement('ul');
+
+                        list.appendChild(box);
+
+                        const info = document.createElement('li')
+                        const infoText = document.createTextNode(item.name + " - " + 'Length: ' + item.length + ' ft');
+                        info.appendChild(infoText);
+                        box.appendChild(info);
+                        
+                    })
               }
             
         </script>
