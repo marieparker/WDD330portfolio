@@ -113,16 +113,16 @@
         <script>
 
             const animals = [
-                { name: 'Cuttlefish', type: 'No', backbone: 'Invertabrate', fact: 'Interesting fact goes here', length: '1.7', picture: 'images/cuttlefish.jpg'},
-                { name: 'Humpback Whale', type: 'No', backbone: 'Vertebrate', fact: 'Whale fact', length: '52', picture: 'images/humpbackwhale.jpg'},
-                { name: 'Ray', type: 'Fish', fact: 'Whale fact', length: '7.5', picture: 'images/ray.jpg'},
-                { name: 'Starfish', type: 'Vertebrate', fact: 'Whale fact', length: '.85', picture: 'images/starfish.jpg'},
-                { name: 'Dolphin', type: 'Vertebrate', fact: 'Whale fact', length: '9', picture: 'images/dolphin.jpg'},
-                { name: 'Sawfish', type: 'Fish', fact: 'Whale fact', length: '25', picture: 'images/sawfish.jpg'},
-                { name: 'Great White Shark', type: 'Fish', fact: 'Whale fact', length: '21', picture: 'images/greatwhiteshark.jpg'},
-                { name: 'Seahorse', type: 'Fish', fact: 'Whale fact', length: '1.2', picture: 'images/seahorse.jpg'},
-                { name: 'Jellyfish', type: 'Vertebrate', fact: 'Whale fact', length: '1.3', picture: 'images/jellyfish.jpg'},
-                { name: 'Pufferfish', type: 'Fish', fact: 'Whale fact', length: '2', picture: 'images/pufferfish.jpg'},
+                { name: 'Cuttlefish', type: 'No', fact: 'Cuttlefish have "W" shaped pupils', length: '1.7', picture: 'images/cuttlefish.jpg'},
+                { name: 'Humpback Whale', type: 'No', fact: 'The tail of each humpback whale is unique, like a human fingerprint', length: '52', picture: 'images/humpbackwhale.jpg'},
+                { name: 'Ray', type: 'Fish', fact: 'Closely related to a shark, a ray has no bones, only cartilage', length: '7.5', picture: 'images/ray.jpg'},
+                { name: 'Starfish', type: 'No', fact: `A starfish's stomach extends outside of its body to engulf it's prey`, length: '.85', picture: 'images/starfish.jpg'},
+                { name: 'Dolphin', type: 'No', fact: `Dolphin's have 2 stomachs, one for food storage and one for digestion`, length: '9', picture: 'images/dolphin.jpg'},
+                { name: 'Sawfish', type: 'Fish', fact: `A sawfish uses uses it's tail to remove crustaceans from the ocean floor and to stun it's prey`, length: '25', picture: 'images/sawfish.jpg'},
+                { name: 'Great White Shark', type: 'Fish', fact: 'Sharks actually have tinky scales called placoid scales', length: '21', picture: 'images/greatwhiteshark.jpg'},
+                { name: 'Seahorse', type: 'Fish', fact: 'Seahorses like to swim in pairs with their tails linked together', length: '1.2', picture: 'images/seahorse.jpg'},
+                { name: 'Jellyfish', type: 'No', fact: 'Jellyfish that have been cut in half can regenerate into two separate jellyfish because they have no brains or hearts', length: '1.3', picture: 'images/jellyfish.jpg'},
+                { name: 'Pufferfish', type: 'Fish', fact: 'Pufferfish, one of the most poisonous creatures in the world, have enough venom stored in their liver to kill 30 adults', length: '2', picture: 'images/pufferfish.jpg'},
 
             ]
 
@@ -186,7 +186,7 @@
                         list.appendChild(box);
 
                         const info = document.createElement('li')
-                        const infoText = document.createTextNode(item.name + " - " + 'Ineresting Fact: ' + item.fact);
+                        const infoText = document.createTextNode(item.name + " - " + 'Interesting Fact: ' + item.fact);
                         info.appendChild(infoText);
                         box.appendChild(info);
                         //console.log(info);
