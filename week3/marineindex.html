@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta char-set="utf-8">
+        <title>Marine Animal Sorter</title>
+        <style>
+            body {
+                background-image: url(water.jpg);
+                color: white;
+                margin: auto;
+            }
+
+            header {
+                text-align: center;
+                padding-bottom: .5em;
+                font-size: 2em;
+            }
+
+            .animal-thumbnail {
+                background-color: white;
+                color: darkblue;
+                padding: 10px;
+                margin: 10px;
+                max-width: 200px;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+            #grid1, #buttonArea {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            img {
+                max-width: 190px;
+            }
+
+            button {
+                margin: 20px;
+                padding: 8px;
+                background-color: rgba(255, 255, 0, .8);
+                border-color: darkblue;
+                border-radius: 5px;
+                font-size: 1.5em;
+            }
+
+            button:hover {
+                cursor: pointer;
+                box-shadow: 0 0 10px black;
+            }
+
+            .sortingArea {
+                background-color: white;
+                min-height: 400px;
+                margin: 0 3em;
+                color: black;
+            }
+
+            h2 {
+                width: 100%;
+                text-align: center;
+                padding-top: 10px;
+            }
+
+            #results {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            ul {
+                display: block;
+            }
+
+            #fish_results, #notfish_results {
+                max-width: 30%;
+                margin: 1% 2.5%;
+            }
+
+
+        </style>
+        
+
+    </head>
+    <body>
+        <header>
+            <h1 id="help">Marine Animals Sorter</h1>
+        </header>
+        
+        <div id="grid1">
+            
+        </div>
+        <div id="buttonArea">
+            <button id="fish" onclick="fish(animals)">Fish or Not Fish</button>
+            <button id="sizeSort" onclick="sortSize(animals)">Largest to Smallest</button>
+        </div>
+        <div class="sortingArea">
+            <h2>Sorting Results</h2>
+            <div id="results"></div>
+        </div>
+
+        <script>
+
+            const animals = [
+                { name: 'Cuttlefish', type: 'No', backbone: 'Invertabrate', fact: 'Interesting fact goes here', length: '1.7', picture: 'images/cuttlefish.jpg'},
+                { name: 'Humpback Whale', type: 'No', backbone: 'Vertebrate', fact: 'Whale fact', length: '52', picture: 'images/humpbackwhale.jpg'},
+                { name: 'Ray', type: 'Fish', fact: 'Whale fact', length: '7.5', picture: 'images/ray.jpg'},
+                { name: 'Starfish', type: 'Vertebrate', fact: 'Whale fact', length: '.85', picture: 'images/starfish.jpg'},
+                { name: 'Dolphin', type: 'Vertebrate', fact: 'Whale fact', length: '9', picture: 'images/dolphin.jpg'},
+                { name: 'Sawfish', type: 'Fish', fact: 'Whale fact', length: '25', picture: 'images/sawfish.jpg'},
+                { name: 'Great White Shark', type: 'Fish', fact: 'Whale fact', length: '21', picture: 'images/greatwhiteshark.jpg'},
+                { name: 'Seahorse', type: 'Fish', fact: 'Whale fact', length: '1.2', picture: 'images/seahorse.jpg'},
+                { name: 'Jellyfish', type: 'Vertebrate', fact: 'Whale fact', length: '1.3', picture: 'images/jellyfish.jpg'},
+                { name: 'Pufferfish', type: 'Fish', fact: 'Whale fact', length: '2', picture: 'images/pufferfish.jpg'},
+
+            ]
+
+            //Code for setting up the page
+              for(i = 0; i < animals.length; i++) {
+                var marineInfo = document.getElementById('grid1');
+                    console.log(marineInfo);
+
+                const animalInfo = document.createElement('div');
+                animalInfo.setAttribute('class', 'animal-thumbnail')
+                marineInfo.appendChild(animalInfo).innerHTML;
+
+                let animalPic = document.createElement('img');
+                animalPic.setAttribute('src', animals[i].picture);
+                    console.log(animalPic);
+                animalInfo.appendChild(animalPic);
+
+                let animalName = document.createTextNode(animals[i].name);
+                animalInfo.appendChild(animalName);
+                    console.log(animalName);
+
+                    console.log(animalInfo);
+              }
+
+              //For sorting the animals into fish and not fish
+              function fish(animals) {
+
+                console.log(animals);
+                
+                    //Erases any preivous results
+                    const results = document.getElementById('results');
+                    results.innerHTML = '';
+
+                    //Creates New div for Fish items
+                    const fish_thumbnail = document.createElement('div');
+                    fish_thumbnail.setAttribute('id', 'fish_results');
+                    results.appendChild(fish_thumbnail);
+                    let title = document.createElement('h3');
+                    title.appendChild(document.createTextNode('Fish'));
+                    fish_thumbnail.appendChild(title);
+
+                    //Creates new Div for Not Fish items
+                    const notfish_thumbnail = document.createElement('div');
+                    notfish_thumbnail.setAttribute('id', 'notfish_results');
+                    results.appendChild(notfish_thumbnail);
+                    otherTitle = document.createElement('h3');
+                    otherTitle.appendChild(document.createTextNode('Not a Fish'));
+                    notfish_thumbnail.appendChild(otherTitle);
+
+
+                    //Filters fish items
+                    const fish = animals.filter(function (item) {
+                        return item.type == 'Fish';
+                    });
+                    
+
+                    fish.forEach(function (item) {
+                        const list = document.getElementById('fish_results');
+                        const box = document.createElement('ul');
+
+                        list.appendChild(box);
+
+                        const info = document.createElement('li')
+                        const infoText = document.createTextNode(item.name + " - " + 'Ineresting Fact: ' + item.fact);
+                        info.appendChild(infoText);
+                        box.appendChild(info);
+                        //console.log(info);
+                        
+                    })
+
+                    //Filters for not fish itemss
+                    const notFish = animals.filter(function (item) {
+                        return item.type !== 'Fish';
+                    });
+                    
+
+                    notFish.forEach(function (item) {
+                        const list = document.getElementById('notfish_results');
+                        const box = document.createElement('ul');
+
+                        list.appendChild(box);
+
+                        const info = document.createElement('li')
+                        const infoText = document.createTextNode(item.name + " - " + 'Ineresting Fact: ' + item.fact);
+                        info.appendChild(infoText);
+                        box.appendChild(info);
+                        //console.log(info);
+                        
+                    })
+              }
+
+              function sortSize(animals) {
+                const BigtoSmall = animals.sort(function(a,b){
+                    return b.length - a.length;
+                });
+                console.log(BigtoSmall);
+              }
+            
+        </script>
+    </body>
+</html>

@@ -18,14 +18,148 @@
             <h2>Notes</h2>
             <h3>Objects</h3>
             <ul>
-                <li>Objects are like a dictionary and can hold anything, primitive data, functions, other objects (such as arrays)</li>
+                <li>Objects are like a dictionary and can hold anything, primitive data, functions, other objects (such as arrays, functions, JSON, basically anything contained within {})</li>
                 <li>created by wrapping the data in {}, each property can have a key-value pair, and are separated by commas</li>
                 <li>Objects can be defined literal (i.e. const spiderman = {};) 0r with constructor function (i.e. const spiderman = new Object();</li>
                 <li>Access property values using dot notation: superman.propertyName</li>
                 <li>OR square brackets: superman['propertyName'] (this is the only way to access values not named using proper naming rules, like ones with a space in them)<br>
                     You can also concatenate the property names within the brackets if needed</li>
                 <li>Symbols can be used as a property key, which reduces the chance of property redundancy</li>
-                <li></li>
+                <li>Calling Methods (functions)
+                    <ul>
+                        <li>example: superman.functionName()</li>
+                        <li>OR example: superman['functionName']()</li>
+                        <li>DON'T FORGET ()</li>
+                    </ul>
+                <li>Checking for Properties/Methods
+                    <ul>
+                        <li>in operator<br>
+                            example: 'keyName' in superman;</li>
+                        <li>Using Logic<br>
+                            example: superman.keyName !== undefined (if it returns true then the key exists, false it doesn't)</li>
+                        <li>hasOwnProperty: this is useful to find out if an object has it's own property or if it is inherited from another object<br>
+                            example: superman.hasOwnProperty('keyName');</li>
+                    </ul>
+                </li>
+                <li>to iterate over all keys or values or entries:
+                    <ul>
+                        <li>Object.keys()</li>
+                        <li>Object.values()</li>
+                        <li>Object.entries()</li>
+                    </ul>
+                </li>
+                <li>Adding/Changing Properties: dot method <br>
+                    example: superman.city = 'Metropolis';</li>
+                <li>Deleting Properties:<br>
+                    example: delete superman.keyName;</li>
+                <li>Objects can contain other objects (see main.js for the main page of this website for an example)</li>
+                <li>Objects as parameters<br>
+                    function greet({greeting,name,age}) {<br>
+                    return `${greeting}! My name is ${name} and I am ${age} years old.`;<br>
+                    }<br>
+                    <br>
+                    greet ({ greeting: `What's up, dude?`, age: 10, name: `Bart});<br>
+                    (order doesn't matter when using an object to pass parameters because it is based on the key name)</li>
+                <li>You can also set default parameters using this:<br>
+                    function greet({greeting='Hello',name,age=18}) {<br>
+                        return `${greeting}! My name is ${name} and I am ${age} years old.`;<br>
+                        }<br>
+                    (These defaults are overridden if another value is passed through the parameters when the function is called)<li>
+                <li>this refers to an object when a method stored inside that object is referring to the object<br>
+                    example:<br>
+                        const dice = {<br>
+                        sides: 6,<br>
+                        roll() {<br>
+                            return Math.floor(this.sides * Math.random()) + 1;<br>
+                        }<br>
+                        }<br>
+                    (random() and floor() are Math methods to return a number bewtwwen 1 and the number of sides)</li>
+                <li>Object Literal Pattern is a useful way to store related data or functions to reduce the cance of variables 
+                    being named the same things and accidentally changed. It creates a nameSpace (another way to define it)<br>
+                    example: a function woudl no longer just be named square(), it would be called myObjectName.square()</li>
+                <li>JSON
+                    <ul>
+                        <li>Property names must be doubel quoted</li>
+                        <li>Values can include: double-quoted strings, numbers, true, false, null, arrays, and objects</li>
+                        <li>NO functions allowed</li>
+                        <li>Methods:
+                            <ul>
+                                <li>.parse() turns JSON format into JS object</li>
+                                <li>.stringify() turns a JS object in JSON (this will just ignore any function values)</li>
+                                <li>Useful when using Ajax requests, or using localStorage</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>MATH object: a built-in object representing certain math constants (like PI, LN, E, SQRT2, etc...), and methods. These properties CANNOT be changed (immutable)
+                    <ul>Math Methods:
+                        <li>Math.abs-absolute value</li>
+                        <li>Math.ceil-rounds up to next integer</li>
+                        <li>Math.floor-rounds down to next integer</li>
+                        <li>Math.round - rounds to nearest integer</li>
+                        <li>Math.exp-exponent</li>
+                        <li>Math.pow-to the pow</li>
+                        <li>for a complete list see <a href="https://www.w3schools.com/jsref/jsref_obj_math.asp">here</a></li>
+                    </ul>
+                </li>
+                <li>Math.random() generates a random number between 0 and 1. To get a higher number, simplay multiply by that number<br>
+                    example: 6 * Math.random();<br>
+                    If you want a random integer use Math.floor()<br>
+                    example: Math.floor(6 * Math.random());</li>
+                <li>DATE object: creates a new object each time because the date, or time, or some property of the object will be different each time it is created<br>
+                    but you can also create an object of a specific date by passing parameters to the constructor
+                    <ul>
+                        <li>example: const today = new Date();</li>
+                        <li>.toString(): converts the whole object into a string (this methid can be used on ANY object, not just Date)</li>
+                        <li>still starts counting at 0, so January is '0' month</li>
+                        <li>The Epoch is January 1, 1970: a timestamp is measured by how many milliseconds since the epoch</li>
+                        <li>Getter Methods
+                        <ul>
+                            <li>.getDay(), or getUTCDay(): finds the day of the week: 0 for Sunday, 1 for Monday, etc...</li>
+                            <li>getDate(), or getUTCDate(): finds the day of the month</li>
+                            <li>.getMonth(), or getUTCMonth(): finds the month, 0 for January, 1 for February, etc...</li>
+                            <li>.getFullYear(), or getUTCFullYear(): finds the year</li>
+                            <li>.getHours(), .getUTCHours(), .getMinutes(), etc...</li>
+                            <li>.getTime(): returns the number of milliseconds since the Epoch<br>
+                            This if usefull for going by certain increments of time (i.e. 1000 * 60 * 60 * 24 represents one day)</li>
+                        </ul></li>
+                        <li>Setter Methods
+                            <ul>
+                                <li>Change the values held in the Date object</li>
+                                <li>.setDate(), .setMonth(), etc...</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>RegExp Objects
+                    <ul>
+                        <li>example: const pattern = /[a-zA-Z]+ing$/;</li>
+                        <li>OR const pattern = new RegExp('[a-zA-Z]+ing'); (this constructor method makes it so you can creates expressions using strings(like when using user input), and you can also use a variable</li> 
+                        <li>Methods
+                        <ul>
+                            <li>.test('testString'): returns true or false, used to see if this expression 'testString' matches the regular expression pattern</li>
+                            <li>.exec(): similar to test, but returns an array with the first match found</li>
+                            <li>Character Groups are placed inside brackets [], this is where the dashes used in ther previous examples come in</li>
+                        </ul></li>
+                        <li>Properties
+                            <ul>
+                                <li>example: pattern = /java/i;</li>
+                                <li>global (g) returns ALL matches</li>
+                                <li>ignoreCase (i) makes the pattern case-insensitive</li>
+                                <li>multiline (m) searches all lines</li>
+                            </ul>
+                        </li>
+                        <li>Other things
+                            <ul>
+                                <li><a href="https://www.w3schools.com/jsref/jsref_obj_regexp.asp"></a>Special Characters</a></li>
+                                <li>Modifiers can be placed after a token to deal with multiple occurences<br>
+                                    example: * matches one or more occurences of that token<br>
+                                    $ marks the position immediately after the last character in the string(</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </div>
 
