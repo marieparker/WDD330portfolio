@@ -11,7 +11,7 @@ const links = [
     },
     {
       label: "Week 3 Example and Practice",
-      type: 'example',
+      type: 'notes',
       url: "week3/marineindex.html"
     }
   ]
