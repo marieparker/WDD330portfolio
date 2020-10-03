@@ -139,7 +139,6 @@
             //Code for setting up the page
               for(i = 0; i < animals.length; i++) {
                 var marineInfo = document.getElementById('grid1');
-                    console.log(marineInfo);
 
                 const animalInfo = document.createElement('div');
                 animalInfo.setAttribute('class', 'animal-thumbnail')
@@ -147,20 +146,14 @@
 
                 let animalPic = document.createElement('img');
                 animalPic.setAttribute('src', animals[i].picture);
-                    console.log(animalPic);
                 animalInfo.appendChild(animalPic);
 
                 let animalName = document.createTextNode(animals[i].name);
                 animalInfo.appendChild(animalName);
-                    console.log(animalName);
-
-                    console.log(animalInfo);
               }
 
               //For sorting the animals into fish and not fish
               function fish(animals) {
-
-                console.log(animals);
                 
                     //Erases any preivous results
                     erase();
