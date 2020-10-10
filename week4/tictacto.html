@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset = 'utf-8'>
+    <title>Tic Tac Toe</title>
+    <style>
+        td {
+            border: solid black 1px;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td:nth-child(-n+3) {
+            border-top: none;
+        }
+        table tr:last-child td {
+            border-bottom: none;
+        } 
+        tr td:first-child {
+            border-left: none;
+        }
+        tr td:last-child {
+            border-right: none;
+        }
+    </style>
+</head>
+<body>
+    <h1> Tic Tac Toe</h1>
+    <table id='gameBoard'>
+        <tr>
+            <td id='1'></td>
+            <td id='2'></td>
+            <td id='3'></td>
+        </tr>
+        <tr>
+            <td id='4'></td>
+            <td id='5'></td>
+            <td id='6'></td>
+        </tr>
+        <tr>
+            <td id='7'></td>
+            <td id='8'></td>
+            <td id='9'></td>
+        </tr>
+    </table>
+    <button id='reset'>Reset Board</button>
+    <script>
+        const table = document.getElementById('gameBoard');
+        table.addEventListener('click', takeTurn);
+
+        let totalTurns = 0;
+
+        let winnerArray = new Array(9);
+        console.log(winnerArray);
+
+        let turn = 0;
+        const players = [
+            {name: "Player 1", symbol: "X"},
+            {name: "Player 2", symbol: "O"}
+        ]
+
+        //Writes X and O for each click
+        function takeTurn(event) {
+            console.log('clicked');
+
+            let square = event.target;
+            console.log(square);
+            square.textContent = players[turn].symbol;
+
+            winnerArray[parseInt(square.id) - 1] = players[turn].name;
+            console.log(winnerArray);
+
+            changeTurns();
+
+            totalTurns++;
+
+            if (totalTurns >= 5) {
+            winner();
+            }
+            //if(totalTurns == 9) {
+                //winner();
+               // window.setTimeout(timeDelay, 500);
+            
+        }
+
+        //delays the alert pop-up
+        function timeDelay(message) {
+            alert(message)
+        }
+
+        //Keeps track of whose turn it is
+        function changeTurns() {
+            turn = (turn + 1) % players.length;
+        }
+
+        //Reset
+        const reset = document.getElementById('reset');
+        reset.addEventListener('click', resetBoard);
+
+        function resetBoard() {
+            for (i=1; i<10; i++) {
+                let square = document.getElementById(i);
+                square.textContent = '';
+
+                winnerArray[i-1] = '';
+            }
+
+
+            turn = 0;
+        }
+
+        //Who won?
+        function winner() {
+            if (winnerArray[0] === winnerArray[1] && winnerArray[0] === winnerArray[2] && winnerArray[0] !== '') {
+                let message = 'The winner is ' + winnerArray[0] + '!'
+                window.setTimeout(function(){
+                    timeDelay(message);
+                }, 500);
+            }
+            else if (winnerArray[3] === winnerArray[4] && winnerArray[3] === winnerArray[5] && winnerArray[3] !== '') {
+                let message = 'The winner is ' + winnerArray[3] + '!'
+                window.setTimeout(function(){
+                    timeDelay(message);
+                }, 500);
+            }
+            else if (winnerArray[6] === winnerArray[7] && winnerArray[6] === winnerArray[8] && winnerArray[6] !== '') {
+                let message = 'The winner is ' + winnerArray[6] + '!'
+                window.setTimeout(function(){
+                    timeDelay(message);
+                }, 500);
+            }
+            else if (winnerArray[0] === winnerArray[3] && winnerArray[0] === winnerArray[6] && winnerArray[0] !== '') {
+                let message = 'The winner is ' + winnerArray[0] + '!'
+                window.setTimeout(function(){
+                    timeDelay(message);
+                }, 500);
+            }
+            else if (winnerArray[1] === winnerArray[4] && winnerArray[1] === winnerArray[7] && winnerArray[1] !== '') {
+                let message = 'The winner is ' + winnerArray[1] + '!'
+                window.setTimeout(function(){
+                    timeDelay(message);
+                }, 500);
+            }
+            else if (winnerArray[2] === winnerArray[5] && winnerArray[2] === winnerArray[8] && winnerArray[2] !== '') {
+                let message = 'The winner is ' + winnerArray[2] + '!'
+                window.setTimeout(function(){
+                    timeDelay(message);
+                }, 500);
+            }
+            else if (winnerArray[0] === winnerArray[4] && winnerArray[0] === winnerArray[8] && winnerArray[0] !== '') {
+                let message = 'The winner is ' + winnerArray[0] + '!'
+                window.setTimeout(function(){
+                    timeDelay(message);
+                }, 500);
+            }
+            else if (winnerArray[2] === winnerArray[4] && winnerArray[2] === winnerArray[6] && winnerArray[2] !== '') {
+                let message = 'The winner is ' + winnerArray[2] + '!'
+                window.setTimeout(function(){
+                    timeDelay(message);
+                }, 500);
+            }
+            else {
+                if (totalTurns === 9) {
+                let message = 'The game is a tie!'
+                window.setTimeout(function(){
+                    timeDelay(message);
+                }, 500);
+            }
+            }
+        }
+    </script>
+</body>
+</html>

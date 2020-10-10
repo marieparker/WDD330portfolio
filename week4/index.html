@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Week 4 Notes</title>
+    <meta name="description" content="Marie Parker's WDD 330 Portfolio">
+
+    <link href="styles.css" rel="stylesheet">
+
+</head>
+<body>
+    <h1>Marie Parker - Week 4 Notes</h1>
+    <div class="columns">
+        <div class="col1">
+            <h2>Notes</h2>
+            <h3>Objects</h3>
+            <ul>
+                <li>Primitive data types have their own constructor functions</br>
+                example: new Number(2);</br>
+                This is not exactly equal to 2. This way will allow me to call methods on it.</br>
+                example: 2..toExponential(); will show 2e+0;
+            </li>
+            <li>Every object has a toString method. And you can override it in the prototype. (see example in <a href="dice.js">dice.js</a>)</li>
+            <li>Monkey-patching is adding methods to ptototypes of built-in methods (like Number)<br>
+                (frowned upon, but a very powerful technic)</li>
+            <li>Monkey-patching is a good technic for adding methods that are native to some browsers but not others.<br>
+                example: trim() method does not exist in IE8 or below (see <a href='dice.js'>dice.js</a>)</li>
+            <li>To avoid possible problems with monkey-patching, you can extend a class by subclassing your own class.</li>
+            <li>Properties in Objects have attributes (value, writable, enumerable, configurable)
+                <ul>
+                    <li>value is undefined by default</li>
+                    <li>all the rest are false by default</li>
+                    <li>when you define a property like me.age = 21; it changes all the other attributes to true<br>
+                    check this by: Object.getOwnPropertyDescriptor(objectName, 'property/key name');</li>
+                    <li> you can change the attribute values (see <a href='dice.js'>dice.js</a>)</li>
+                </ul>
+            </li>
+            <li>Use get() and set() methods sparingly. They can cause confusion because they change the default settings for how to set values and get values.</li>
+            <br>
+            <li>You can create another object by copying an object instead of creating a class, using the 'create' cunstructor function which is built-in (see <a href='dice.js'>dice.js</a>)</li>
+            <br>
+            <li>Mixins
+                <ul>
+                    <li>Object.assign() just refers to the same data, so if it is changed everything that is assigned to it will show the change<br>
+                        example: Object.assign(a,b); (a will refer to everything in b)</li>                
+                </ul>
+            </li>
+            <li>you can make a mixin() function that will create a hard copy (a new copy) instead (see <a href='dice.js'>dice.js</a>)</li>
+            <br>
+            <li>If a method returns this; it can be strung together with other methods<br>
+                example: superman.fly().move().xray()</li>
+            <li>this loses potency when a function is nested in a function
+                <ul>
+                    <li>One solution to this is to create a variable called 'that' set equal to this before you go into the nested function</li>
+                    <li>Use the bind() method (see <a href='dice.js'>dice.js</a>)</li>
+                    <li>Use for-of instead of a forEach to loop through</li>
+                    <li>Use arrow functions (they don't have their own this to interfere)</li>
+                </ul>
+            </li>
+            <br>
+            <li>Borrowing methods can allow you to use built-in methods on other things (not really needed in ES6)
+                <ol>
+                    <li>set the method equal to a variable<br>
+                        example: const slice = Array.prototype.slice;</li>
+                    <li>call that method on an object<br>
+                        example: slice.call(arguments, 1, 3);</li>
+                </ol>
+            </li>
+            </ul>
+            <h3>Modular Javascript</h3>
+            <ul>
+                <li>Using modules breaks down code into smaller chunks that can be used only when needed</li>
+                <li>use .js or .mjs for file names</li>
+                <li>anything you would like to use from a module (variable, function, object, class, etc...) must be exorted
+                    in that file and then imported into whatever file you want to use it in
+                </li>
+                <li>see <a href="https://www.digitalocean.com/community/tutorials/js-modules-es6">this site</a> for an easy reference on the syntax for 
+                exporting and importing using modules</li>
+                <li>when a function is exported that uses another function or a callback, it can acces that function, but the file
+                    it is in cannot, so it keeps those functions private
+                </li>
+            </ul>
+        </div>
+
+        <div class="col2">
+            <h2>Questions</h2>
+                <ul>
+                    <li>Why wouldn't my Turtle.prototype.weapon overwrite what was in the 
+                        original constructor function? It's like it created a whole different 
+                        object, one where raph.weapon was 'hands', and one where raph.prototype.weapon 
+                        was 'Hands'.
+                    </li>
+                    <li>What does the question mark do in the mixin function example?</li>
+                </ul>
+        </div>
+    </div>
+</body>
+</html>

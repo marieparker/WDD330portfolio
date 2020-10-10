@@ -1,0 +1,87 @@
+<!doctype html>
+<head>
+    <meta charset = 'utf-8'>
+    <title>Tic Tac Toe</title>
+    <style>
+        #board {
+            max-width: 300px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-content: center;
+        }
+        .space {
+            height: 100px;
+            border-top: solid black 1px;
+            border-left: solid black 1px;
+        }
+        .space:nth-child(-n+3) {
+            border-top: none;
+        }
+        .space:nth-child(3n+1) {
+            border-left: none;
+        }
+        .XO {
+            height: 75px;
+            margin-top: 20px;
+            font-size: 50px;
+            text-align: center;
+        }
+        button {
+            margin: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <div id='board'>
+        <div class='space' id='1'></div>
+        <div class='space' id='2'></div>
+        <div class='space' id='3'></div>
+        <div class='space' id='4'></div>
+        <div class='space' id='5'></div>
+        <div class='space' id='6'></div>
+        <div class='space' id='7'></div>
+        <div class='space' id='8'></div>
+        <div class='space' id='9'></div>
+    </div>
+    <button id='reset'>Reset Board</button>
+    <script>
+        let turn = 0;
+
+        let board = document.getElementById('board');
+        board.addEventListener('click', takeTurn);
+
+        function takeTurn(event) {
+            console.log(turn);
+            let space = event.target;
+            console.log(space);
+            let box = document.createElement('div');
+            space.appendChild(box);
+
+            box.setAttribute('class', 'XO')
+            if (turn % 2 === 0) {
+                box.textContent = 'X';
+            }
+            else {
+                box.textContent = 'O';
+            }
+            turn++;
+            
+            console.log(turn);
+            return turn;
+        }
+
+        const resetButton = document.getElementById('reset');
+        resetButton.addEventListener('click', reset);
+        function reset(turn) {
+            for (i = 1; i < 10; i++) {
+                let space = document.getElementById(i);
+                space.textContent = '';
+            }
+            turn = 0;
+            console.log(turn);
+            return turn;
+        }
+    </script>
+</body>
